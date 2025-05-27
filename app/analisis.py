@@ -23,3 +23,12 @@ class Analisis:
     def participante_mayor_pago(self):
         idx = self.df['valor_pagado'].idxmax()
         return self.df.loc[idx]
+    
+    def grafico_barras_participantes_por_taller(self):
+        conteo = self.df['taller'].value_counts()
+        conteo.plot(kind='bar', color='skyblue')
+        plt.title('Participantes por Taller')
+        plt.xlabel('Taller')
+        plt.ylabel('Cantidad')
+        plt.tight_layout()
+        plt.show()
