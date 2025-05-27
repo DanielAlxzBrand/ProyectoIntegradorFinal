@@ -32,3 +32,12 @@ class Analisis:
         plt.ylabel('Cantidad')
         plt.tight_layout()
         plt.show()
+
+    def histograma_edades(self):
+        self.df['edad'].dropna().astype(int).plot(kind='hist', bins=10, color='lightgreen')
+        plt.title('Histograma de Edades')
+        plt.xlabel('Edad')
+        plt.ylabel('Frecuencia')
+        plt.tight_layout()
+        plt.show()
+
