@@ -1,22 +1,20 @@
 class Participante:
-    def __init__(self, nombre, apellido, edad, taller, telefono, email):
+    
+    TARIFAS = {
+        "pintura": 6000,
+        "teatro": 8000,
+        "música": 10000,
+        "danza": 7000
+    }
+
+    def __init__(self, nombre, apellido, edad, taller, telefono, email, mes=None, clases_asistidas=0):
         self.nombre = nombre
         self.apellido = apellido
         self.edad = edad
-        self.taller = taller  
+        self.taller = taller.lower() if taller else None
         self.telefono = telefono
         self.email = email
+        self.mes = mes  
+        self.clases_asistidas = clases_asistidas  
         self.asistencias = []  
         self.pagos = []        
-
-    def registrar_asistencia(self, fecha):
-        self.asistencias.append(fecha)
-
-    def registrar_pago(self, monto):
-        self.pagos.append(monto)
-
-    def total_pagado(self):
-        return sum(self.pagos)
-
-    def total_asistencias(self):
-        return len(self.asistencias)
