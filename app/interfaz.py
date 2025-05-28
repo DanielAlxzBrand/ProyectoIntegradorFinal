@@ -22,7 +22,7 @@ class InterfazApp:
             entry.grid(row=idx, column=1)
             self.entradas[campo] = entry
 
-        #Pendiente mostrar todos y reportes y eliminar
+        #Realizazdo mostrar todos y reportes y eliminar
         tk.Button(self.frame, text="Registrar", command=self.registrar).grid(row=0, column=2, padx=5)
         tk.Button(self.frame, text="Modificar", command=self.modificar).grid(row=1, column=2, padx=5)
         tk.Button(self.frame, text="Eliminar", command=self.eliminar).grid(row=2, column=2, padx=5)
