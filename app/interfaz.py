@@ -88,6 +88,43 @@ class InterfazApp:
         self.df.to_csv(RUTA_DATOS, index=False)
         self.actualizar_tabla()
         messagebox.showinfo("Éxito", "Participante modificado correctamente.")
+    def eliminar(self):
+        seleccionado = self.tabla.selection()
+        if not seleccionado:
+            messagebox.showwarning("Seleccionar", "Seleccione un registro para eliminar.")
+            return
+        idx = self.tabla.index(seleccionado[0])
+        self.df = self.df.drop(self.df.index[idx]).reset_index(drop=True)
+        self.df.to_csv(RUTA_DATOS, index=False)
+        self.actualizar_tabla()
+        messagebox.showinfo("Éxito", "Participante eliminado correctamente.")
+
+    def mostrar_todos(self):
+        self.cargar_datos()
+
+    def reportes(self):
+        analisis = Analisis(RUTA_DATOS)
+        total = analisis.total_participantes()
+        incompletos = analisis.participantes_incompletos()
+        promedio = analisis.promedio_pago_por_taller()
+        taller_max = analisis.taller_mas_participantes()
+        mayor_pago = analisis.participante_mayor_pago()
+
+        reporte = (
+            f"Total participantes: {total}\n"
+            f"Participantes incompletos: {len(incompletos)}\n"
+            f"Promedio pago por taller:\n{promedio}\n"
+            f"Taller con más participantes: {taller_max}\n"
+            f"Participante con mayor pago:\n{mayor_pago}\n"
+        )
+        messagebox.showinfo("Reporte", reporte)
+
+        #mostrar gráficos
+        analisis.grafico_barras_participantes_por_taller()
+        analisis.histograma_edades()
+        analisis.grafico_circular_talleres()
+
+        
 
     
 
