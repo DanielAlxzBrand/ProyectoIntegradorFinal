@@ -22,7 +22,7 @@ class InterfazApp:
             entry.grid(row=idx, column=1)
             self.entradas[campo] = entry
 
-        #Pendiente mostrar todos y reportes y eliminar
+        #botones
         tk.Button(self.frame, text="Registrar", command=self.registrar).grid(row=0, column=2, padx=5)
         tk.Button(self.frame, text="Modificar", command=self.modificar).grid(row=1, column=2, padx=5)
         tk.Button(self.frame, text="Eliminar", command=self.eliminar).grid(row=2, column=2, padx=5)
@@ -34,8 +34,9 @@ class InterfazApp:
         for campo in self.campos:
             self.tabla.heading(campo, text=campo.capitalize())
         self.tabla.pack(padx=10, pady=10, fill="x")
-        self.cargar_datos() 
 
+        self.cargar_datos()
+        
     def cargar_datos(self):
         try:
             self.df = pd.read_csv(RUTA_DATOS)
@@ -87,6 +88,7 @@ class InterfazApp:
         self.df.to_csv(RUTA_DATOS, index=False)
         self.actualizar_tabla()
         messagebox.showinfo("Éxito", "Participante modificado correctamente.")
+
     def eliminar(self):
         seleccionado = self.tabla.selection()
         if not seleccionado:
@@ -122,10 +124,6 @@ class InterfazApp:
         analisis.grafico_barras_participantes_por_taller()
         analisis.histograma_edades()
         analisis.grafico_circular_talleres()
-
-        
-
-    
 
 if __name__ == "__main__":
     root = tk.Tk()
