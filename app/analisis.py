@@ -41,3 +41,13 @@ class Analisis:
         plt.tight_layout()
         plt.show()
 
+    def grafico_circular_talleres(self):
+        conteo = self.df['taller'].value_counts()
+        conteo.plot(kind='pie', autopct='%1.1f%%', startangle=90)
+        plt.title('Distribución de Participantes por Taller')
+        plt.ylabel('')
+        plt.tight_layout()
+        plt.show()
+
+    def guardar_datos(self):
+        self.df.to_csv(self.ruta_datos, index=False)
