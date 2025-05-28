@@ -11,14 +11,14 @@ class Participante:
 
 # Inicializamos los atributos del participante al crear una nueva instancia
     def __init__(self, nombre, apellido, edad, taller, telefono, email, mes=None, clases_asistidas=0):
-        self.nombre = nombre # Asignamos el nombre del participante
-        self.apellido = apellido # Asignamos el apellido del participante
-        self.edad = edad # Asignamos la edad del participante
-        self.taller = taller.lower() if taller else None # Guardamos el taller en minúsculas para uniformidad
-        self.telefono = telefono # Guardamos el número de teléfono
-        self.email = email # Guardamos el correo electrónico
-        self.mes = mes  # Guardamos el mes de inscripción o asistencia
-        self.clases_asistidas = clases_asistidas # Inicializamos la cantidad de clases asistidas
+        self.nombre = nombre 
+        self.apellido = apellido 
+        self.edad = edad 
+        self.taller = taller.lower() if taller else None 
+        self.telefono = telefono 
+        self.email = email 
+        self.mes = mes  
+        self.clases_asistidas = clases_asistidas 
         self.asistencias = []  # Creamos una lista vacía para registrar las asistencias
         self.pagos = [] # Creamos una lista vacía para registrar los pagos       
 
@@ -48,5 +48,5 @@ class Participante:
 # Verificamos si hay algún dato obligatorio incompleto
     def datos_incompletos(self):
         
-        campos = [self.nombre, self.apellido, self.edad, self.taller, self.telefono, self.email, self.mes] # Listamos los campos obligatorios
-        return any(c is None or c == "" for c in campos) # Retornamos True si algún campo está vacío o es None
+        campos_obligatorios = [self.nombre, self.apellido, self.edad, self.taller, self.telefono, self.email, self.mes] # Listamos los campos obligatorios
+        return any(campo is None or campo == "" for campo in campos_obligatorios) # Retornamos True si algún campo está vacío o es None
