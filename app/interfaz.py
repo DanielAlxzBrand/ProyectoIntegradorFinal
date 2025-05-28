@@ -34,8 +34,7 @@ class InterfazApp:
         for campo in self.campos:
             self.tabla.heading(campo, text=campo.capitalize())
         self.tabla.pack(padx=10, pady=10, fill="x")
-
-        
+        self.cargar_datos() 
 
     def cargar_datos(self):
         try:
