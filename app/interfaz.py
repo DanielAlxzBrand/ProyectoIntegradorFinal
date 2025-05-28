@@ -36,7 +36,7 @@ class InterfazApp:
         self.tabla.pack(padx=10, pady=10, fill="x")
 
         self.cargar_datos()
-
+        
     def cargar_datos(self):
         try:
             self.df = pd.read_csv(RUTA_DATOS)
